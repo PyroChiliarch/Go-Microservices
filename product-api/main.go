@@ -6,21 +6,19 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"productapiHandlers"
 	"time"
-	"webHandlers"
 )
 
 func main() {
 
 	//Create handlers
 	l := log.New(os.Stdout, "product-api", log.LstdFlags)
-	hh := webHandlers.NewHello(l)
-	gh := webHandlers.NewGoodbye(l)
+	ph := productapiHandlers.NewProducts(l)
 
 	//Register handlers
 	sm := http.NewServeMux()
-	sm.Handle("/", hh)
-	sm.Handle("/goodbye", gh)
+	sm.Handle("/", ph)
 
 	//Start the web server
 	s := &http.Server{

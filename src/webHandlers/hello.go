@@ -1,4 +1,4 @@
-package handlers
+package webHandlers
 
 import (
 	"fmt"
